@@ -1,0 +1,102 @@
+        <!--Sign In Modal -->
+        <div class="modal fade" id="SignInModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <!--Content-->
+            <div class="modal-content form-elegant">
+            <!--Header-->
+            <div class="modal-header text-center">
+                <h3 class="modal-title w-100 dark-grey-text font-weight-bold my-3" id="myModalLabel"><strong>Sign in</strong></h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <!--Body-->
+            <div class="modal-body mx-4">
+                <!--Body-->
+                <form action="/login" method="POST">
+                    <div class="md-form mb-5">
+                    <input type="text" id="usernameLogin" name="username" class="form-control validate">
+                    <label data-error="wrong" data-success="right" for="usernameLogin">Your email</label>
+                    </div>
+                    <div class="md-form pb-3">
+                    <input type="password" id="passwordLogin" name="password" class="form-control validate">
+                    <label data-error="wrong" data-success="right" for="passwordLogin">Your password</label>
+                    <p class="font-small blue-text d-flex justify-content-end">Forgot <a href="#" class="blue-text ml-1">
+                    Password?</a></p>
+                    </div>
+                    <div class="text-center mb-3">
+                    <button type="submit" class="btn blue-gradient btn-block z-depth-1a rounded-pill">Sign in</button>
+                    </div>
+                </form>
+
+                <p class="font-small dark-grey-text text-right d-flex justify-content-center mb-3 pt-2"> or Sign in
+                with:</p>
+
+                <div class="row my-3 d-flex justify-content-center">
+                <!--Facebook-->
+                <button type="button" class="btn btn-white btn-rounded mr-md-3 z-depth-1a"><i class="fab fa-facebook-f text-center"></i></button>
+                <!--Twitter-->
+                <button type="button" class="btn btn-white btn-rounded mr-md-3 z-depth-1a"><i class="fab fa-twitter"></i></button>
+                <!--Google +-->
+                <button type="button" class="btn btn-white btn-rounded z-depth-1a"><i class="fab fa-google-plus-g"></i></button>
+                </div>
+            </div>
+            <!--Footer-->
+            <div class="modal-footer mx-5 pt-3 mb-1">
+                <p class="font-small grey-text d-flex justify-content-end">Not a member? <a href="#" class="blue-text ml-1">
+                    Sign Up</a></p>
+            </div>
+            </div>
+            <!--/.Content-->
+        </div>
+        </div>
+        <!-- Sign In Modal -->
+
+        <!-- Sign Up Modal-->
+        <div class="modal fade" id="SignUpModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header text-center">
+                <h4 class="modal-title w-100 font-weight-bold">Sign up</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="/register" method="POST">
+                    <div class="modal-body mx-3">
+                    <div class="md-form mb-5">
+                    <i class="fas fa-envelope prefix grey-text"></i>
+                    <input type="text" id="username" name="username" class="form-control validate">
+                    <label data-error="wrong" data-success="right" for="username">Username</label>
+                    </div>
+                    <div class="md-form mb-5">
+                        <i class="fas fa-phone prefix grey-text"></i>
+                        <input type="text" id="phone" name="phone" class="form-control validate">
+                        <label data-error="wrong" data-success="right" for="phone">WhatsApp Phone Number</label>
+                    </div>
+                    <div class="md-form mb-4">
+                    <i class="fas fa-lock prefix grey-text"></i>
+                    <input type="password" id="password" name="password" class="form-control validate">
+                    <label data-error="wrong" data-success="right" for="password">Your password</label>
+                    </div>
+                    </div>
+                    <div class="modal-footer d-flex justify-content-center">
+                        <input type="submit" value="Sign Up" class="btn blue-gradient btn-block z-depth-1a rounded-pill">
+                    </div>
+                </form>
+            </div>
+        </div>
+        </div>
+     
+        <!-- JQuery -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <!-- Bootstrap tooltips -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+        <!-- Bootstrap core JavaScript -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+        <!-- MDB core JavaScript -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
+    </body>
+</html>	
