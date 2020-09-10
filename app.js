@@ -1,89 +1,61 @@
-var bodyParser = require("body-parser"),
-  express = require("express"),
+var express = require("express"),
+  bodyParser = require("body-parser"),
   mongoose = require("mongoose"),
   passport = require("passport"),
   User = require("./models/user"),
   LocalStrategy = require("passport-local"),
   passportLocalMongoose = require("passport-local-mongoose"),
   expressSession = require("express-session"),
-  app = express();
+  initDB = require("./database/"),
+  baseRoutes = require("./routes/index");
+app = express();
 
-mongoose.connect("mongodb://localhost:27017/tambola", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useFindAndModify: false,
-});
+initDB([User]);
+//
 
-app.use(bodyParser.urlencoded({ extended: true }));
-
+// application wide middleware goes first
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+//session management
 app.use(
   expressSession({
-    secret: "Rusty is the best and cutest dog in the world",
+    secret: "Rusty is the best and cutest dog in the world", // this is a secret key that is used to emcrypt your  session
     resave: false,
     saveUninitialized: false,
   })
 );
 
 app.set("view engine", "ejs");
-app.use(passport.initialize());
-app.use(passport.session());
-passport.use(new LocalStrategy(User.authenticate()));
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
-
 app.use(function (req, res, next) {
   res.locals.currentUser = req.user;
   next();
 });
 
-//================
-// ROUTES
-//================
+app.use("/", baseRoutes);
 
-// Showing home page
-app.get("/", function (req, res) {
-  res.render("landing");
-});
-
-// Showing dashboard
-app.get("/dashboard", isLoggedIn, function (req, res) {
-  res.render("dashboard");
-});
-
-//Handling user signup
-app.post("/register", function (req, res) {
-  var newUser = new User({
-    username: req.body.username,
-    phone: req.body.phone,
-  });
-  User.register(newUser, req.body.password, function (err, user) {
-    if (err) {
-      console.log(err);
-    }
-    passport.authenticate("local")(req, res, function () {
-      res.redirect("/dashboard");
-    });
-  });
-});
-
-app.post(
-  "/login",
-  passport.authenticate("local", {
-    successRedirect: "/dashboard",
-    failureRedirect: "/",
-  })
-);
-
-app.get("/logout", function (req, res) {
-  req.logout();
-  res.redirect("/");
-});
-
-function isLoggedIn(req, res, next) {
-  if (req.isAuthenticated()) {
-    return next();
-  }
-}
+/**
+ * Step1 : ensure you have received data values from the form
+ * Step 2 ensure they are not UNDEFINED - this can be accomplished client-side
+ * //for instance, you may decide to prevent form submission if the fields are empty
+ *
+ * //Step 3 ensure that your username field matches :
+ *  PHONE
+ *    - entirely numeric
+ *     - size 10 digits ONLY
+ *     - further security checks ,such as cleaning the input with String.replace() method
+ *        - sanitization checks basically
+ *   USERNAME
+ *   - email only ?
+ *   - alpha characters ?
+ *   -  numeric chars ?
+ *   -  minimum length ?
+ *   -  special chars ?  ^ & % ! etc
+ *
+ * // what you need to do is ,if you look at your USER MODEL,
+ * //
+ *
+ *
+ */
 
 const PORT = process.env.PORT || 8080;
 

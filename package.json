@@ -4,16 +4,18 @@
   "description": "tambola v1",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon ./app.js"
   },
   "author": "Arkadeep Deb",
   "license": "ISC",
   "dependencies": {
-    "bcrypt": "^5.0.0",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "ejs": "^3.1.5",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
+    "joi": "^17.2.1",
+    "joi-phone-number": "^4.1.2",
     "mongoose": "^5.10.3",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
